@@ -110,9 +110,7 @@ namespace PinPayments.Console
             customer.State = "NSW";
             var customerUpate = ps.CustomerUpate(customer);
 
-
             var respCustomerCharge = ps.Charge(new PostCharge { IPAddress = "127.0.0.1", Amount = 1000, Description = "Charge by customer token: " + customer.Email, Email = customer.Email, CustomerToken = customer.Token });
-
 
             // Card Token
             // https://pin.net.au/docs/api/cards

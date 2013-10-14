@@ -14,15 +14,13 @@ namespace PinPayments
 {
     public class PinService
     {
-        string PinKey;
-
         public PinService()
         {
         }
 
         public PinService(string pinKey)
         {
-            this.PinKey = pinKey;
+            PinPaymentsConfig.SetApiKey( pinKey);
         }
 
         public CardCreateResponse CardCreate(Card c)
@@ -63,7 +61,7 @@ namespace PinPayments
 
         public ChargeResponse Charge(PostCharge c)
         {
-            var url = Urls.CustomerAdd;
+            var url = Urls.Charge;
             var postData = ParameterBuilder.ApplyAllParameters(c, "");
 
             if (c.Card != null)
