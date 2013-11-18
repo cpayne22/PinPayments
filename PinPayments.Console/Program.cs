@@ -79,7 +79,7 @@ namespace PinPayments.Console
             customer.Card.Country = "Australia";
 
             var respCustomer = ps.CustomerAdd(customer);
-            System.Console.WriteLine("Customer token: " + respCustomer.Token);
+            System.Console.WriteLine("Customer token: " + respCustomer.Response.Token);
 
             // Get Customer
             var customers = ps.Customers();

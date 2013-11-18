@@ -14,6 +14,10 @@ namespace PinPayments.Models
         public Pagination Pagination { get; set; }
     }
 
+    public class CustomerAdd:PinError
+    {
+        public Customer Response { get; set; }
+    }
     public class Customer
     {
         public Customer()

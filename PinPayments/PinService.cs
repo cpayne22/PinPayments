@@ -95,13 +95,15 @@ namespace PinPayments
             return JsonConvert.DeserializeObject<Charges>(response);
         }
 
-        public Customer CustomerAdd(Customer c)
+        public CustomerAdd CustomerAdd(Customer c)
         {
             var url = Urls.CustomerAdd;
             var postData = ParameterBuilder.ApplyAllParameters(c, "");
 
             var response = Requestor.PostString(url, postData);
-            return JsonConvert.DeserializeObject<Customer>(response);
+            var customerAdd = JsonConvert.DeserializeObject<CustomerAdd>(response);
+
+            return customerAdd;
         }
 
         public CustomerUpdate CustomerUpate(Customer c)

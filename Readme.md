@@ -106,7 +106,7 @@ Customers
 
     var response = ps.CustomerAdd(customer);
 
-    System.Console.WriteLine("Customer token: " + response.Token);
+    System.Console.WriteLine("Customer token: " + response.Customer.Token);
 
 	
 ### Updating a customer
