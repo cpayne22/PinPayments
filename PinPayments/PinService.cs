@@ -151,12 +151,13 @@ namespace PinPayments
             return result;
         }
 
-        public Customers Customer(string token)
+        public Customer Customer(string token)
         {
             var url = Urls.Customers + "/" + token;
 
             var response = Requestor.GetString(url);
-            return JsonConvert.DeserializeObject<Customers>(response);
+            var customer = JsonConvert.DeserializeObject<CustomerAdd>(response);
+            return customer.Response;
         }
     }
 }

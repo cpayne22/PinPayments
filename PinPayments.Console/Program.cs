@@ -90,7 +90,6 @@ namespace PinPayments.Console
                 customers = ps.Customers(1);
             }
 
-
             // Update Customer
             customer = customers.Customer[0];
 
@@ -110,6 +109,9 @@ namespace PinPayments.Console
             customer.State = "NSW";
             var customerUpate = ps.CustomerUpate(customer);
 
+            // Get a customer by token
+            var current = ps.Customer(customerUpate.Customer.Token);
+            
             var respCustomerCharge = ps.Charge(new PostCharge { IPAddress = "127.0.0.1", Amount = 1000, Description = "Charge by customer token: " + customer.Email, Email = customer.Email, CustomerToken = customer.Token });
 
             // Card Token
