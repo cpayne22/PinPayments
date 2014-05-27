@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\ChargeSearch.cs" />
+    <Compile Include="BaseUrl.cs" />
     <Compile Include="Infrastructure\Urls.cs" />
     <Compile Include="Mapper.cs" />
     <Compile Include="Models\Card.cs" />

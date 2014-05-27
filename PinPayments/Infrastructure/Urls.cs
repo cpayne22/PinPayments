@@ -50,7 +50,7 @@ namespace PinPayments.Infrastructure
 
         private static string BaseUrl
         {
-            get { return ConfigurationManager.AppSettings["URI"]; }
+            get { return PinPaymentsConfig.GetBaseUrl(); }
         }
     }
 }

@@ -20,7 +20,12 @@ namespace PinPayments
 
         public PinService(string pinKey)
         {
-            PinPaymentsConfig.SetApiKey( pinKey);
+            PinPaymentsConfig.SetApiKey(pinKey);
+        }
+
+        public PinService(string pinKey, string baseUrl) : this(pinKey)
+        {
+            PinPaymentsConfig.SetBaseUrl(baseUrl);
         }
 
         public CardCreateResponse CardCreate(Card c)
