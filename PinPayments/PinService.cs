@@ -39,7 +39,16 @@ namespace PinPayments
 
         public Charges Charges()
         {
+            return Charges(null);
+        }
+
+        public Charges Charges(int? page)
+        {
             var url = Urls.Charges;
+            if (page != null)
+            {
+                url += "?page=" + page.ToString();
+            }
             var response = Requestor.GetString(url);
 
             var result = JsonConvert.DeserializeObject<Charges>(response);
