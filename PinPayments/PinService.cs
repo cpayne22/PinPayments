@@ -106,7 +106,7 @@ namespace PinPayments
             return customerAdd;
         }
 
-        public CustomerUpdate CustomerUpate(Customer c)
+        public CustomerUpdate CustomerUpdate(Customer c)
         {
             var url = Urls.CustomerAdd + "/" + c.Token;
             var postData = ParameterBuilder.ApplyAllParameters(c, "");
