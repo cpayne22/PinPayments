@@ -9,6 +9,7 @@ namespace PinPayments
     public static class PinPaymentsConfig
     {
         private static string _apiKey;
+        private static string _baseUrl;
 
         internal static string GetApiKey()
         {
@@ -27,6 +28,20 @@ namespace PinPayments
         public static void SetApiKey(string newApiKey)
         {
             _apiKey = newApiKey;
+        }
+
+        internal static string GetBaseUrl()
+        {
+            if (String.IsNullOrEmpty(_baseUrl))
+            {
+                _baseUrl = ConfigurationManager.AppSettings["URI"];
+            }
+            return _baseUrl;
+        }
+
+        public static void SetBaseUrl(string newBaseUrl)
+        {
+            _baseUrl = newBaseUrl;
         }
     }
 }

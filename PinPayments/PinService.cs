@@ -20,7 +20,12 @@ namespace PinPayments
 
         public PinService(string pinKey)
         {
-            PinPaymentsConfig.SetApiKey( pinKey);
+            PinPaymentsConfig.SetApiKey(pinKey);
+        }
+
+        public PinService(string pinKey, string baseUrl) : this(pinKey)
+        {
+            PinPaymentsConfig.SetBaseUrl(baseUrl);
         }
 
         public CardCreateResponse CardCreate(Card c)
@@ -34,7 +39,16 @@ namespace PinPayments
 
         public Charges Charges()
         {
+            return Charges(null);
+        }
+
+        public Charges Charges(int? page)
+        {
             var url = Urls.Charges;
+            if (page != null)
+            {
+                url += "?page=" + page.ToString();
+            }
             var response = Requestor.GetString(url);
 
             var result = JsonConvert.DeserializeObject<Charges>(response);
@@ -106,7 +120,7 @@ namespace PinPayments
             return customerAdd;
         }
 
-        public CustomerUpdate CustomerUpate(Customer c)
+        public CustomerUpdate CustomerUpdate(Customer c)
         {
             var url = Urls.CustomerAdd + "/" + c.Token;
             var postData = ParameterBuilder.ApplyAllParameters(c, "");

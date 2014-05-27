@@ -107,10 +107,10 @@ namespace PinPayments.Console
             customer.Card.Country = "Australia";
 
             customer.State = "NSW";
-            var customerUpate = ps.CustomerUpate(customer);
+            var customerUpdate = ps.CustomerUpdate(customer);
 
             // Get a customer by token
-            var current = ps.Customer(customerUpate.Customer.Token);
+            var current = ps.Customer(customerUpdate.Customer.Token);
             
             var respCustomerCharge = ps.Charge(new PostCharge { IPAddress = "127.0.0.1", Amount = 1000, Description = "Charge by customer token: " + customer.Email, Email = customer.Email, CustomerToken = customer.Token });
 
