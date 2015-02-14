@@ -45,7 +45,7 @@ Charges
 	// 4200000000000000 - Visa
 
 	var card = new Card();
-	card.Number = "5520000000000000";
+	card.CardNumber = "5520000000000000";
 	card.CVC = "111";
 	card.ExpiryMonth = DateTime.Today.Month.ToString();  // Use the real Expiry
 	card.ExpiryYear = (DateTime.Today.Year + 1).ToString(); // Not my defaults!
