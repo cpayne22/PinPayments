@@ -21,6 +21,7 @@ namespace PinPayments
         public PinService(string pinKey)
         {
             PinPaymentsConfig.SetApiKey( pinKey);
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
         }
 
         public CardCreateResponse CardCreate(Card c)

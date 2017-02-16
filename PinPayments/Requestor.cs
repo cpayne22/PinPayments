@@ -41,6 +41,8 @@ namespace PinPayments
         private static WebRequest GetWebRequest(string url, string method, string postData)
         {
             var request = HttpWebRequest.Create(url) as HttpWebRequest;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
             request.Method = method;
             request.ContentType = "application/x-www-form-urlencoded";
             request.UserAgent = "C# API Wrapper v001";
@@ -52,7 +54,7 @@ namespace PinPayments
             {
                 var paramBytes = Encoding.UTF8.GetBytes(postData);
                 request.ContentLength = paramBytes.Length;
-
+              
                 var requestStream = request.GetRequestStream();
                 requestStream.Write(paramBytes, 0, paramBytes.Length);
             }
