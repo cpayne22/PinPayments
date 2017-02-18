@@ -12,12 +12,36 @@ namespace PinPayments.Actions
         [JsonProperty("query")]
         public string Query{get;set;}
         
-        [JsonProperty("startDate")]
-        public DateTime? StartDate{get;set;}
-        
-        [JsonProperty("endDate")]
-        public DateTime? EndDate{get;set;}
+        [JsonProperty("start_date")]
+        public string startDateStr
+        {
+            get
+            {
+                if (StartDate != null)
+                {
+                    return ((DateTime)StartDate).ToString("yyyy/MM/dd");
+                }
+                return "";
+            }
+        }
+        [JsonIgnore]
+        public DateTime? StartDate { get; set; }
 
+        [JsonProperty("end_date")]
+        public string endDateStr
+        {
+            get
+            {
+                if (EndDate != null)
+                {
+                    return ((DateTime)EndDate).ToString("yyyy/MM/dd");
+                }
+                return "";
+            }
+        }
+        [JsonIgnore]
+        public DateTime? EndDate { get; set; }
+        
         [JsonIgnore]
         public ChargeSearchSortEnum Sort {get;set;}
 
