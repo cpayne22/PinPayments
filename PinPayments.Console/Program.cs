@@ -14,10 +14,10 @@ namespace PinPayments.Console
         static void Main(string[] args)
         {
             // initialise PIN by passing your API Key
-            // See:  https://pin.net.au/docs/api#keys
+            // See:  https://pinpayments.com/docs/api#keys
             PinService ps = new PinService(ConfigurationManager.AppSettings["Secret_API"]);
 
-            // https://pin.net.au/docs/api/test-cards
+            // https://pinpayments.com/docs/api/test-cards
             // 5520000000000000 - Test Mastercard
             // 4200000000000000 - Test Visa
 
@@ -39,7 +39,7 @@ namespace PinPayments.Console
 
 
             // Refunds - Pin supports partial refunds
-            // https://pin.net.au/docs/api/customers#get-customers-charges
+            // https://pinpayments.com/docs/api/customers#get-customers-charges
 
             var refund = ps.Refund(response.Token, 200);
             refund = ps.Refund(response.Token, 100);
@@ -47,7 +47,7 @@ namespace PinPayments.Console
             var refunds = ps.Refunds(response.Token);
 
             // Searching for a Charge
-            // See https://pin.net.au/docs/api/charges#search-charges for more detail
+            // See https://pinpayments.com/docs/api/charges#search-charges for more detail
 
             var respChargesSearch = ps.ChargesSearch(new Actions.ChargeSearch { Query = "", Sort = ChargeSearchSortEnum.Amount, SortDirection = SortDirectionEnum.Descending });
             System.Console.WriteLine(respChargesSearch.Count.ToString() + " transactions found");
@@ -61,10 +61,10 @@ namespace PinPayments.Console
 
 
             // Create Customer
-            // See: https://pin.net.au/docs/api/customers#post-customers
+            // See: https://pinpayments.com/docs/api/customers#post-customers
 
             var customer = new Customer();
-            customer.Email = "roland@pin.net.au";
+            customer.Email = "roland@pinpayments.com";
             customer.Card = new Card();
             customer.Card.CardNumber = "5520000000000000";
             customer.Card.ExpiryMonth = "05";
@@ -115,7 +115,7 @@ namespace PinPayments.Console
             var respCustomerCharge = ps.Charge(new PostCharge { IPAddress = "127.0.0.1", Amount = 1000, Description = "Charge by customer token: " + customer.Email, Email = customer.Email, CustomerToken = customer.Token });
 
             // Card Token
-            // https://pin.net.au/docs/api/cards
+            // https://pinpayments.com/docs/api/cards
             // 5520000000000000 - Test Mastercard
             // 4200000000000000 - Test Visa
 

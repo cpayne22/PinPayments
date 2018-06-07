@@ -1,16 +1,16 @@
 PinPayments Library
 ==========
 
-The PinPayments Library is a .net wrapper for http://pin.net.au. 
+The PinPayments Library is a .net wrapper for http://pinpayments.com. 
 
-For more information about the examples below, you can visit https://pin.net.au/docs/api for a full reference.
+For more information about the examples below, you can visit https://pinpayments.com/docs/api for a full reference.
 
 (Inspiration and thanks to Jayme Davis's Stripe implemetnation:  https://github.com/jaymedavis/stripe.net)
 
 Quick Start
 -----------
 
-a) Obtain either your Publish key or your Secret key (see the differences here: https://pin.net.au/docs/api)
+a) Obtain either your Publish key or your Secret key (see the differences here: https://pinpayments.com/docs/api)
 
 b) Update your AppSetting with your api key to your config (this is the easiest way)
 
@@ -40,7 +40,7 @@ Charges
 
 	PinService ps = new PinService(ConfigurationManager.AppSettings["Secret_API"]);
 
-	// https://pin.net.au/docs/api/test-cards
+	// https://pinpayments.com/docs/api/test-cards
 	// 5520000000000000 - Mastercard
 	// 4200000000000000 - Visa
 
@@ -63,7 +63,7 @@ Charges
 	
 ### Charge Search
 
-	// See https://pin.net.au/docs/api/charges#search-charges for more detail
+	// See https://pinpayments.com/docs/api/charges#search-charges for more detail
     PinService ps = new PinService(ConfigurationManager.AppSettings["Secret_API"]);
 
     var cs = new PinPayments.ChargeSearch { Query = "", Sort = ChargeSearchSortEnum.Amount, SortDirection = SortDirectionEnum.Descending };
@@ -79,18 +79,18 @@ Customers
 -----
 
 ### Listing all customers
-    // See https://pin.net.au/docs/api/customers#get-customers
+    // See https://pinpayments.com/docs/api/customers#get-customers
     ps = new PinService(ConfigurationManager.AppSettings["Secret_API"]);
     var customers = ps.Customers();
 	
 	
 ### Adding a new customer
 	
-    // See https://pin.net.au/docs/api/customers#post-customers for more detail
+    // See https://pinpayments.com/docs/api/customers#post-customers for more detail
     ps = new PinService(ConfigurationManager.AppSettings["Secret_API"]);
 
     var customer = new Customer();
-    customer.Email = "roland@pin.net.au";
+    customer.Email = "roland@pinpayments.com";
     customer.Card = new Card();
     customer.Card.CardNumber = "5520000000000000";
     customer.Card.ExpiryMonth = "05";
@@ -111,7 +111,7 @@ Customers
 	
 ### Updating a customer
 
-    // See https://pin.net.au/docs/api/customers#put-customer
+    // See https://pinpayments.com/docs/api/customers#put-customer
     ps = new PinService(ConfigurationManager.AppSettings["Secret_API"]);
     var customers = ps.Customers();
     customer = customers.Customer[0];
@@ -135,7 +135,7 @@ Customers
 ### Refunds
 
     // Refunds - Pin supports partial refunds
-    // https://pin.net.au/docs/api/customers#get-customers-charges
+    // https://pinpayments.com/docs/api/customers#get-customers-charges
 
     var refund = ps.Refund("INSERT CHARGE TOKEN", 200);
     refund = ps.Refund("INSERT CHARGE TOKEN", 100);
@@ -148,7 +148,7 @@ Customers
 ### Card Tokens
 
     // Card Token
-    // https://pin.net.au/docs/api/cards
+    // https://pinpayments.com/docs/api/cards
     // 5520000000000000 - Test Mastercard
     // 4200000000000000 - Test Visa
 
